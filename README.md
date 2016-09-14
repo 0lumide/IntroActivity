@@ -37,7 +37,6 @@ public class DemoActivity extends IntroActivity {
 ```
 
 ### Gradle dependency
-
 **1.** Add the JitPack repository to your Gradle build file
 
 ```
