@@ -33,7 +33,6 @@
         tools:text="Description"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:lines="2"
         android:ellipsize="middle"
         android:textSize="18sp"
         android:textColor="@color/description_color"
