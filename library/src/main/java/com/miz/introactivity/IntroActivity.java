@@ -29,13 +29,16 @@ public abstract class IntroActivity extends AppCompatActivity {
     private LinearLayout mProgressLayout;
     private boolean mShowSkipButton, mShowNextButton;
     private int mProgressCircleColor = Integer.MIN_VALUE;
+    private boolean changeTheme = true;
 
     @Override
     @CallSuper
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTheme(R.style.IntroActivity_Theme);
+        if(changeTheme) {
+            setTheme(R.style.IntroActivity_Theme);
+        }
 
         // Set the content view
         setContentView(R.layout.intro);
@@ -78,7 +81,13 @@ public abstract class IntroActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy() {
+    public void setTheme(int theme) {
+        changeTheme = false;
+        super.setTheme(theme);
+    }
+
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
 
         // Remove the OnPageChangeListener when the Activity is destroyed
@@ -257,7 +266,7 @@ public abstract class IntroActivity extends AppCompatActivity {
 
     /**
      * Set the text color of the Skip button. Default color is white (#F0F0F0).
-     * @param color Text color to set.
+     * @param colorResId Text color to set.
      */
     protected void setSkipButtonTextColorRes(@ColorRes int colorResId) {
         int color = ContextCompat.getColor(this, colorResId);
@@ -304,17 +313,17 @@ public abstract class IntroActivity extends AppCompatActivity {
     /**
      * Callback when the "Skip" button is pressed.
      */
-    protected abstract void onSkipPressed();
+    protected void onSkipPressed() {}
 
     /**
      * Callback when the "Next" button is pressed.
      * @param pagePosition Zero-based index of the current page position.
      */
-    protected abstract void onNextPressed(int pagePosition);
+    protected void onNextPressed(int pagePosition) {}
 
     /**
      * Callback when the "Done" button is pressed.
      */
-    protected abstract void onDonePressed();
+    protected void onDonePressed() {}
 
 }
