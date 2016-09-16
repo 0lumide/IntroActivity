@@ -51,7 +51,7 @@ allprojects {
 **2.** Add the dependency
 
 ```
-compile 'com.github.0lumide:IntroActivity:v0.2'
+compile 'com.github.0lumide:IntroActivity:v0.2.1'
 ```
 
 
